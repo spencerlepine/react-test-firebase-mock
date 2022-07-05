@@ -1,0 +1,17 @@
+FROM node:16.10.0
+
+WORKDIR /app
+
+COPY package.json ./
+
+COPY yarn.lock ./
+
+# Fix Puppeteer package errors
+ENV PUPPETEER_SKIP_DOWNLOAD=true
+RUN yarn install --frozen-lockfile
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

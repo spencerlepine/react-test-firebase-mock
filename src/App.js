@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import { ProvideAuth } from "./hooks/useAuth.js";
+import ProfilePage from "./components/ProfilePage.js";
+import Navbar from "./components/Navbar.js";
 import './App.css';
+import Pages from "./pages";
 
-function App() {
+const App = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ProvideAuth>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<ProfilePage />} />
+        {Pages.map(([pagePath, Component]) => (
+          <Route path={pagePath} element={<Component />} />
+        ))}
+      </Routes>
+    </ProvideAuth>
   );
 }
+
 
 export default App;

@@ -1,0 +1,25 @@
+version: "3"
+services:
+  api:
+    image: api
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - db
+    environment:
+      - PORT=3000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/app/src
+  db:
+    image: firestore
+    build:
+      context: .
+      dockerfile: Dockerfile.firestore
+    ports:
+      - 4000:4000
+      - 9099:9099
+    volumes:
+      - .cache/firebase/emulators/:/app/.cache/firebase/emulators/

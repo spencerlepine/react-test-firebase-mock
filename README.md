@@ -1,5 +1,23 @@
 # Getting Started with Create React App
 
+Webapp with login feature. Running wth Docker, testing with Puppeteer headless browser.
+
+Under the hood, it is a React App, with React Router, and Firebase to manage user authentication.
+
+# Setup
+```
+docker-compose up
+# visit localhost:3000
+```
+
+```
+firebase --version
+firebase logout # https://firebase.google.com/docs/cli
+firebase login
+firebase init # https://firebase.google.com/docs/emulator-suite/install_and_configure
+firebase init emulators
+firebase emulators:start
+```
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
